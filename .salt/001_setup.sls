@@ -133,7 +133,7 @@ prepreqs-{{cfg.name}}:
     - watch:
       - file: {{cfg.name}}-dirs
 {% endfor %}
-{% for i in [] %}
+{% for i in data.get('configs', []) %}
 config-{{i}}:
   file.managed:
     - source: salt://makina-projects/{{cfg.name}}/files/{{i}}
