@@ -145,7 +145,5 @@ config-{{i}}:
     - defaults:
         cfg: |
              {{scfg}}
-    - require:
-      - cmd: {{cfg.name}}-pmadownload
 {% endfor %}
 
