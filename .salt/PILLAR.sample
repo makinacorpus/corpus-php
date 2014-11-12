@@ -32,6 +32,7 @@ makina-projects.projectname:
     #   - root: foo
     fpm_sock: "{project_root}/var/run/fpm.sock"
     fpm_pool:
+      pool_name: "{name}"
       open_basedir:
         - "{data_root}/www"
         - "{data_root}/var/log"
