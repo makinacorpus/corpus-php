@@ -16,6 +16,7 @@ echo reboot:
 
 {{nginx.virtualhost(data.domain,
                     data.www_dir,
+                    vhost_basename=cfg.name,
                     server_aliases=data.server_aliases,
                     vh_top_source=data.nginx_top,
                     vh_content_source=data.nginx_vhost,
