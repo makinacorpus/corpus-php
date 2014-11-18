@@ -90,6 +90,14 @@
                --groups {{cfg.group}}:r-- \
                --groups {{salt['mc_apache.settings']().httpd_user}}:r--;
             fi
+            find -L "{{cfg.project_root}}/www" -type d |while read f;do
+               {{locs.resetperms}} -q --no-recursive \
+                --fmode 770 --dmode 771 --paths "${f}"\
+                -u {{cfg.user}} -g {{cfg.group}}\
+                --groups {{salt['mc_apache.settings']().httpd_user}}:r-x\
+                --users {{cfg.user}}:rwx --groups {{cfg.group}}:rwx;
+             done
+
   cmd.run:
     - name: {{cfg.project_dir}}/global-reset-perms.sh
     - cwd: {{cfg.project_root}}
