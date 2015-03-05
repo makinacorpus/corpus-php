@@ -4,7 +4,6 @@
 include:
   - makina-states.services.php.phpfpm_with_nginx
 {% set data = cfg.data %}
-# the fcgi sock is meaned to be at docroot/../var/fcgi/fpm.sock;
 
 # incondentionnaly reboot nginx & fpm upon deployments
 echo reboot:
@@ -20,7 +19,7 @@ echo reboot:
                     server_aliases=data.server_aliases,
                     vh_top_source=data.nginx_top,
                     vh_content_source=data.nginx_vhost,
-                    cfg=cfg) }}
+                    cfg=cfg.name) }}
 
 {{php.fpm_pool(cfg.data.domain,
                cfg.data.www_dir,

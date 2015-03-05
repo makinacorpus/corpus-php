@@ -2,9 +2,6 @@
 {% set scfg = salt['mc_utils.json_dump'](cfg)%}
 {% set php = salt['mc_php.settings']() %}
 {% set data = cfg.data %}
-{% set pma_ver=data.pma_ver %}
-
-{% set rpw = salt['mc_mysql.settings']().root_passwd %}
 
 prepreqs-{{cfg.name}}:
   pkg.installed:
@@ -100,7 +97,6 @@ prepreqs-{{cfg.name}}:
       - {{cfg.data_root}}/var/run
       - {{cfg.data_root}}/var/private
 
-
 {% for d in ['lib', 'bin'] %}
 {{cfg.name}}-dirs{{d}}:
   file.symlink:
@@ -133,6 +129,7 @@ prepreqs-{{cfg.name}}:
     - watch:
       - file: {{cfg.name}}-dirs
 {% endfor %}
+
 {% for i in data.get('configs', []) %}
 config-{{i}}:
   file.managed:
@@ -146,4 +143,3 @@ config-{{i}}:
         cfg: |
              {{scfg}}
 {% endfor %}
-

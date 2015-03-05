@@ -18,6 +18,8 @@
 makina-projects.projectname:
   data:
     admin_allowed_ips: []
+    url: "https://github.com/makinacorpus/corpus-php.git"
+    tag: "master"
     index: index.php
     domain: '{fqdn}'
     server_aliases: []
@@ -62,4 +64,4 @@ makina-projects.projectname:
           gc_ttl: 0
           shm_size: "64M"
 
-# vim:set ft=yaml:
+# vim:set ft=sls:
