@@ -18,6 +18,7 @@
 makina-projects.projectname:
   data:
     url_type: git
+    app_root: '{project_root}/www'
     url: "https://github.com/makinacorpus/corpus-php.git"
     tag: "master"
     #app_url_hash: "md5=499ae16dcae71eeb7c3a30c75ea7a1a6"
@@ -30,7 +31,7 @@ makina-projects.projectname:
     mail: sysadmin@foo.com
     cron_periodicity: "*/30 * * * *"
     password: "secret"
-    www_dir: '{project_root}/www'
+    www_dir: '{app_root}'
     htaccess: '/etc/{name}.webaccess'
     nginx_vhost: "salt://makina-projects/{name}/files/nginx.conf"
     nginx_top: "salt://makina-projects/{name}/files/nginx.top.conf"
