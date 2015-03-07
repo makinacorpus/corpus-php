@@ -20,7 +20,7 @@
     - tar_options: "{{data.app_url_tar_opts}}"
     - user: "{{cfg.user}}"
     - group: "{{cfg.group}}"
-    - onlyif: "{{data.archive_test_exists}}" 
+    - onlyif: "{{data.app_archive_test_exists}}" 
 {% endif %}
     - watch_in:
       - mc_proxy: "{{cfg.name}}-configs" 
