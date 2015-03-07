@@ -25,7 +25,7 @@ makina-projects.projectname:
     #app_url_archive_format: "tar"
     #app_url_tar_opts: "xzf"
     #app_url_hash: "md5=499ae16dcae71eeb7c3a30c75ea7a1a6"
-    #app_archive_test_exist: test ! -e "{{cfg.data_root}}/www/index.php"
+    #app_archive_test_exist: test ! -e "{data_root}/www/index.php"
     index: index.php
     domain: '{fqdn}'
     server_aliases: []
