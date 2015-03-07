@@ -2,7 +2,7 @@
 {% set scfg = salt['mc_utils.json_dump'](cfg)%}
 {% set data = cfg.data %}
 
-{{cfg.name}}-config:
+{{cfg.name}}-configs:
   mc_proxy.hook: []
 
 {% for i, data in data.get('configs', []) %}
