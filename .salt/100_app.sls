@@ -20,7 +20,7 @@
     - tar_options: "{{data.app_url_tar_opts}}"
     - user: "{{cfg.user}}"
     - group: "{{cfg.group}}"
-    - onlyif: test ! -e "{{cfg.data_root}}/www/index.php"
+    - onlyif: "{{data.archive_test_exists}}" 
 {% endif %}
     - watch_in:
       - mc_proxy: "{{cfg.name}}-configs" 
