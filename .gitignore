@@ -1,10 +1,7 @@
-log
-makina-states.*-deploy.log
-phpMyAdmin-4.2.10-all-languages/
-pma-version
-pma.zip
-private
-tmp
-var
-www
+/log
+/sessions
+/private
+/tmp
+/var
+/www
 

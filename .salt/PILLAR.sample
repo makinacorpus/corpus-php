@@ -17,9 +17,13 @@
 # corpus mysql project configuration
 makina-projects.projectname:
   data:
-    admin_allowed_ips: []
+    url_type: git
     url: "https://github.com/makinacorpus/corpus-php.git"
     tag: "master"
+    #url_hash: "md5=499ae16dcae71eeb7c3a30c75ea7a1a6"
+    #url_archive_format: "tar"
+    #url_tar_opts: "xzf"
+    #url_hash: "md5=499ae16dcae71eeb7c3a30c75ea7a1a6"
     index: index.php
     domain: '{fqdn}'
     server_aliases: []
@@ -63,5 +67,13 @@ makina-projects.projectname:
           user_ttl: 300
           gc_ttl: 0
           shm_size: "64M"
+    #disabled_urls:
+
+    #  - "(^/install.*)" 
+    #php_exts:
+    #  php5-mcrypt: mcrypt 
+    #  php5-mysqlnd: mysqlnd
+    #force_ssl: true
+    #ldap_url: "ldap://foo.net/dc=m,dc=org?uid?sub?(objectClass=person)"
 
 # vim:set ft=sls:

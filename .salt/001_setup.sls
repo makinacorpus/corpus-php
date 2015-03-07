@@ -3,10 +3,24 @@
 {% set php = salt['mc_php.settings']() %}
 {% set data = cfg.data %}
 
+{% import "makina-states/services/php/macros.sls" as macros with context %}
+
+include:
+  - makina-states.services.php.phpfpm_with_nginx
+
+{% for mod, ext in data.get('php_exts', {}).items() %}
+{{ macros.toggle_ext(ext, True) }}
+{% endfor %}
+
 prepreqs-{{cfg.name}}:
   pkg.installed:
+    - watch_in:
+      - mc_proxy: makina-php-pre-inst
     - pkgs:
       - unzip
+      {% for mod, ext in data.get('php_exts', {}).items() %}
+      - "{{mod}}"
+      {% endfor %}
       - xsltproc
       - curl
       - {{ php.packages.mysql }}
@@ -77,7 +91,7 @@ prepreqs-{{cfg.name}}:
       - file: {{cfg.name}}-htaccess
 {% endfor %}
 {% endfor %}
-{% endif %}  
+{% endif %}
 
 {{cfg.name}}-dirs:
   file.directory:
@@ -90,7 +104,9 @@ prepreqs-{{cfg.name}}:
     - names:
       - {{cfg.project_root}}/lib
       - {{cfg.project_root}}/bin
+      {% if data.url_type not in ['git'] %}
       - {{cfg.data_root}}/www
+      {% endif %}
       - {{cfg.data_root}}/var
       - {{cfg.data_root}}/var/log
       - {{cfg.data_root}}/var/tmp
@@ -128,18 +144,4 @@ prepreqs-{{cfg.name}}:
     - group: {{cfg.group}}
     - watch:
       - file: {{cfg.name}}-dirs
-{% endfor %}
-
-{% for i in data.get('configs', []) %}
-config-{{i}}:
-  file.managed:
-    - source: salt://makina-projects/{{cfg.name}}/files/{{i}}
-    - name: {{cfg.project_root}}/www/{{i}}
-    - template: jinja
-    - mode: 750
-    - user: {{cfg.user}}
-    - group: {{cfg.group}}
-    - defaults:
-        cfg: |
-             {{scfg}}
 {% endfor %}
