@@ -3,6 +3,10 @@
 {% set data = cfg.data %}
 
 {{cfg.name}}-configs:
+  mc_proxy.hook:
+    - watch_in:
+      - mc_proxy: "{{cfg.name}}-end-configs"
+{{cfg.name}}-end-configs:
   mc_proxy.hook: []
 
 {% for i, data in data.get('configs', []) %}
@@ -16,6 +20,8 @@ config-{{i}}:
     - group: {{cfg.group}}
     - watch:
       - mc_proxy: "{{cfg.name}}-configs"
+    - watch:
+      - mc_proxy: "{{cfg.name}}-end-configs"
     - defaults:
         cfg: "{{cfg.name}}"
 {% endfor %}
