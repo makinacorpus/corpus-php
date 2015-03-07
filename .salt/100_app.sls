@@ -9,13 +9,13 @@
   mc_git.latest:
     - rev: "{{data.app_rev}}"
     - name: "{{data.app_url}}"
-    - target: "{{cfg.data_root}}/www"
+    - target: "{{data.app_root}}"
     - user: "{{cfg.user}}"
 {% else %}
   archive.extracted:
     - source: "{{data.app_url}}"
     - source_hash: "{{data.app_url_hash}}"
-    - name: "{{cfg.data_root}}/www"
+    - name: "{{data.app_root}}"
     - archive_format: "{{data.app_url_archive_format}}"
     - tar_options: "{{data.app_url_tar_opts}}"
     - user: "{{cfg.user}}"
