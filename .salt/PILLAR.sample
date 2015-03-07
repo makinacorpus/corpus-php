@@ -17,10 +17,10 @@
 # corpus mysql project configuration
 makina-projects.projectname:
   data:
-    url_type: git
     app_root: '{project_root}/www'
-    url: "https://github.com/makinacorpus/corpus-php.git"
-    tag: "master"
+    app_url: "https://github.com/makinacorpus/corpus-php.git"
+    app_url_type: git
+    app_url_rev: "master"
     #app_url_hash: "md5=499ae16dcae71eeb7c3a30c75ea7a1a6"
     #app_url_archive_format: "tar"
     #app_url_tar_opts: "xzf"
