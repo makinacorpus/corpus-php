@@ -7,7 +7,7 @@
 {{cfg.name}}-download:
 {% if data.app_url_type == 'git' %}
   mc_git.latest:
-    - rev: "{{data.app_rev}}"
+    - rev: "{{data.app_url_rev}}"
     - name: "{{data.app_url}}"
     - target: "{{data.app_root}}"
     - user: "{{cfg.user}}"
