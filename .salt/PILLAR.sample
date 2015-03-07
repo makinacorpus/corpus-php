@@ -20,10 +20,10 @@ makina-projects.projectname:
     url_type: git
     url: "https://github.com/makinacorpus/corpus-php.git"
     tag: "master"
-    #url_hash: "md5=499ae16dcae71eeb7c3a30c75ea7a1a6"
-    #url_archive_format: "tar"
-    #url_tar_opts: "xzf"
-    #url_hash: "md5=499ae16dcae71eeb7c3a30c75ea7a1a6"
+    #app_url_hash: "md5=499ae16dcae71eeb7c3a30c75ea7a1a6"
+    #app_url_archive_format: "tar"
+    #app_url_tar_opts: "xzf"
+    #app_url_hash: "md5=499ae16dcae71eeb7c3a30c75ea7a1a6"
     index: index.php
     domain: '{fqdn}'
     server_aliases: []
