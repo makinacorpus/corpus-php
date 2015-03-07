@@ -20,7 +20,7 @@ config-{{i}}:
     - group: {{cfg.group}}
     - watch:
       - mc_proxy: "{{cfg.name}}-configs"
-    - watch:
+    - watch_in:
       - mc_proxy: "{{cfg.name}}-end-configs"
     - defaults:
         cfg: "{{cfg.name}}"
