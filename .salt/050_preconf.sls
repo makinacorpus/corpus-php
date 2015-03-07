@@ -1,8 +1,6 @@
 {% set cfg = opts['ms_project'] %}
 {% set scfg = salt['mc_utils.json_dump'](cfg)%}
-{% set php = salt['mc_php.settings']() %}
 {% set data = cfg.data %}
-
 {% if data.app_url %}
 {{cfg.name}}-download:
 {% if data.app_url_type == 'git' %}
@@ -11,6 +9,8 @@
     - name: "{{data.app_url}}"
     - target: "{{data.app_root}}"
     - user: "{{cfg.user}}"
+    - watch_in:
+      - mc_proxy: "{{cfg.name}}-end-download"
 {% else %}
   archive.extracted:
     - source: "{{data.app_url}}"
@@ -20,6 +20,11 @@
     - tar_options: "{{data.app_url_tar_opts}}"
     - user: "{{cfg.user}}"
     - group: "{{cfg.group}}"
-    - onlyif: "{{data.app_archive_test_exists}}" 
+    - onlyif: "{{data.app_archive_test_exists}}"
+    - watch_in:
+      - mc_proxy: "{{cfg.name}}-end-download"
 {% endif %}
 {% endif %}
+
+{{cfg.name}}-end-download:
+  mc_proxy.hook: []
