@@ -3,21 +3,21 @@
 {% set php = salt['mc_php.settings']() %}
 {% set data = cfg.data %}
 
-{% if data.url %}
+{% if data.app_url %}
 {{cfg.name}}-download:
-{% if data.url_type == 'git' %}
+{% if data.app_url_type == 'git' %}
   mc_git.latest:
-    - rev: "{{data.rev}}"
-    - name: "{{data.url}}"
+    - rev: "{{data.app_rev}}"
+    - name: "{{data.app_url}}"
     - target: "{{cfg.data_root}}/www"
     - user: "{{cfg.user}}"
 {% else %}
   archive.extracted:
-    - source: "{{data.url}}"
-    - source_hash: "{{data.url_hash}}"
+    - source: "{{data.app_url}}"
+    - source_hash: "{{data.app_url_hash}}"
     - name: "{{cfg.data_root}}/www"
-    - archive_format: "{{data.url_archive_format}}"
-    - tar_options: "{{data.url_tar_opts}}"
+    - archive_format: "{{data.app_url_archive_format}}"
+    - tar_options: "{{data.app_url_tar_opts}}"
     - user: "{{cfg.user}}"
     - group: "{{cfg.group}}"
     - onlyif: test ! -e "{{cfg.data_root}}/www/index.php"
