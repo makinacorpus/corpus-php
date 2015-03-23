@@ -104,7 +104,7 @@ prepreqs-{{cfg.name}}:
     - names:
       - {{cfg.project_root}}/lib
       - {{cfg.project_root}}/bin
-      {% if data.url_type not in ['git'] %}
+      {% if data.get('url_type', '') not in ['git'] %}
       - {{cfg.data_root}}/www
       {% endif %}
       - {{cfg.data_root}}/var

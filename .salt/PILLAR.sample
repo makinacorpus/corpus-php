@@ -11,7 +11,7 @@
 # you can also merge parts of this file
 # with the relevant pillar
 
-# makina-states mysql configuration (copy in your pillar, 
+# makina-states mysql configuration (copy in your pillar,
 #                                    uncomment and edit)
 # makina-states.services.db.mysql.available_mem: 1500
 # corpus mysql project configuration
@@ -29,6 +29,9 @@ makina-projects.projectname:
     index: index.php
     domain: '{fqdn}'
     server_aliases: []
+    ftp_root: "{www_dir}"
+    #ftp_ip: 1.2.3.4
+    ftp_port_range: "21000 21100"
     mail: sysadmin@foo.com
     cron_periodicity: "*/30 * * * *"
     password: "secret"
@@ -38,6 +41,8 @@ makina-projects.projectname:
     nginx_top: "salt://makina-projects/{name}/files/nginx.top.conf"
     # http_users:
     #   - root: foo
+    # users:
+    #   - foo: {password: 123}
     fpm_sock: "{project_root}/var/run/fpm.sock"
     fpm_pool:
       pool_name: "{name}"
@@ -71,9 +76,9 @@ makina-projects.projectname:
           shm_size: "64M"
     #disabled_urls:
 
-    #  - "(^/install.*)" 
+    #  - "(^/install.*)"
     #php_exts:
-    #  php5-mcrypt: mcrypt 
+    #  php5-mcrypt: mcrypt
     #  php5-mysqlnd: mysqlnd
     #force_ssl: true
     #ldap_url: "ldap://foo.net/dc=m,dc=org?uid?sub?(objectClass=person)"
