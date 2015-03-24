@@ -44,6 +44,19 @@ makina-projects.projectname:
     # users:
     #   - foo: {password: 123}
     fpm_sock: "{project_root}/var/run/fpm.sock"
+    #configs:
+    #  - afail2ban:
+    #      template: fail2ban.conf
+    #      target: /etc/fail2ban/jail.d/wp.conf
+    #      mode: 700
+    #      user: root
+    #      group: root
+    #  - ffail2ban:
+    #      template: filter.conf
+    #      target: /etc/fail2ban/filter.d/wp.conf
+    #      mode: 700
+    #      user: root
+    #      group: root
     fpm_pool:
       pool_name: "{name}"
       open_basedir:

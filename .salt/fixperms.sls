@@ -88,7 +88,7 @@
                --paths "{{cfg.project_root}}"/www/index.php\
                --users {{cfg.user}}:r-- \
                --groups {{cfg.group}}:r-- \
-               --groups {{salt['mc_apache.settings']().httpd_user}}:r--;
+               --groups {{salt['mc_apache.settings']().httpd_user}}:rwx;
             fi
             find -L "{{cfg.project_root}}/www" -type d |while read f;do
                {{locs.resetperms}} -q --no-recursive \
@@ -97,6 +97,13 @@
                 --groups {{salt['mc_apache.settings']().httpd_user}}:r-x\
                 --users {{cfg.user}}:rwx --groups {{cfg.group}}:rwx;
              done
+             find -L "{{cfg.project_root}}/www" -type f |while read f;do
+               {{locs.resetperms}} -q --no-recursive \
+                --fmode 770 --dmode 771 --paths "${f}"\
+                -u {{cfg.user}} -g {{cfg.group}}\
+                --groups {{salt['mc_apache.settings']().httpd_user}}:rwx\
+                --users {{cfg.user}}:rwx --groups {{cfg.group}}:rwx;
+             done     
 
   cmd.run:
     - name: {{cfg.project_dir}}/global-reset-perms.sh

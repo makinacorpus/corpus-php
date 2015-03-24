@@ -1,7 +1,7 @@
+/corpus-php
 /log
 /sessions
-/private
-/tmp
-/var
 /www
-
+/var
+/tmp
+/private
